@@ -1,0 +1,19 @@
+parameters:
+- name: solution
+  type : string
+  default: '**/*.sln'
+
+jobs:
+- job : NuGetToolInstaller
+  - task: NuGetToolInstaller@0
+    displayName: 'Use NuGet 5.x'
+    inputs:
+      versionSpec: 5.x
+
+- job : NuGet
+  - task: NuGetCommand@2
+    displayName: 'NuGet restore'
+    inputs:
+      restoreSolution: '${{Parameters.solution}}' #indiquer sur l'enfant que $(Parameters.solution) indique son chemin de solution?
+      feedsToUse: config
+      nugetConfigPath: NuGet.config

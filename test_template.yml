@@ -1,0 +1,4 @@
+jobs:
+- template: template/test_modele.yml  # Template reference
+  parameters:
+    restoreSolution: Septeo.Imaging/Septeo.Imaging.sln
